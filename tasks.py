@@ -1,4 +1,6 @@
 import os
+import time
+
 from celery import Celery
 
 ACCESS_KEY = os.environ['AWS_ACCESS_KEY']
@@ -8,9 +10,11 @@ app = Celery('tasks', broker='sqs://{}:{}@'.format(ACCESS_KEY, SECRET_KEY))
 
 @app.task
 def normal_task():
-    pass
+    time.sleep(0.3)
 
 
 @app.task
 def eta_test():
-    pass
+    time.sleep(0.3)
+
+
