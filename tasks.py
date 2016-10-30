@@ -14,7 +14,13 @@ def normal_task():
 
 
 @app.task
-def eta_test():
+def eta_task(i):
+    print(i)
     time.sleep(0.3)
 
 
+#for _ in xrange(30):
+#    normal_task.delay()
+
+#for i in xrange(30):
+#    eta_task.apply_async((i, ), countdown=60*i)
